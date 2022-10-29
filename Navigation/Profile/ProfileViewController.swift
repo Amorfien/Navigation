@@ -11,30 +11,17 @@ class ProfileViewController: UIViewController {
 
     let profileHeaderView = ProfileHeaderView()
 
-    var a: CGFloat {
-        navigationController?.navigationBar.frame.height ?? 0
-    }
-    var b:CGFloat {
-        view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-    }
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-//        profileHeaderView.backgroundColor = .yellow
         view.addSubview(profileHeaderView)
         self.title = "Profile"
         self.navigationController?.navigationBar.backgroundColor = .white
-        
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileHeaderView.frame = view.frame
-        
-
     }
-
-
+    
 }
