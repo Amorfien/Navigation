@@ -68,7 +68,7 @@ class ProfileHeaderView: UIView {
         nameLabel.frame = CGRect(x: gap + avatar + gap, y: statusbar + header + 27,
                                  width: Int(UIScreen.main.bounds.width) - (3 * gap + avatar), height: 22)
         addSubview(nameLabel)
-        statusLabel.frame = CGRect(x: gap + avatar + gap, y: 224 - 34 - 18,
+        statusLabel.frame = CGRect(x: gap + avatar + gap, y: statusbar + header + gap + avatar + gap - 34 - 18,
                                    width: Int(UIScreen.main.bounds.width) - (3 * gap + avatar), height: 18)
         addSubview(statusLabel)
         statusButton.frame = CGRect(x: gap, y: statusbar + header + gap + avatar + gap,
