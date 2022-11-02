@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18346E0B290D67D6009F8DAC /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */; };
 		184E4F452901837900E9DBDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4F442901837900E9DBDD /* AppDelegate.swift */; };
 		184E4F472901837900E9DBDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4F462901837900E9DBDD /* SceneDelegate.swift */; };
 		184E4F4E2901837A00E9DBDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184E4F4D2901837A00E9DBDD /* Assets.xcassets */; };
 		184E4F512901837A00E9DBDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184E4F4F2901837A00E9DBDD /* LaunchScreen.storyboard */; };
 		1854B4782902B4CC00C05A87 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854B4772902B4CC00C05A87 /* InfoViewController.swift */; };
+		187E7FA5290C06FB00D38452 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E7FA4290C06FB00D38452 /* ProfileHeaderView.swift */; };
+		188D696B29126BCF00F805FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D696A29126BCF00F805FC /* Constants.swift */; };
 		18B4D07A2901B6F20065CE49 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4D0792901B6F20065CE49 /* TabBarController.swift */; };
 		18B4D07E2901CDD50065CE49 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4D07D2901CDD50065CE49 /* FeedViewController.swift */; };
 		18B4D0802901CDEA0065CE49 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4D07F2901CDEA0065CE49 /* ProfileViewController.swift */; };
@@ -20,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		184E4F412901837900E9DBDD /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184E4F442901837900E9DBDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		184E4F462901837900E9DBDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +31,8 @@
 		184E4F502901837A00E9DBDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		184E4F522901837A00E9DBDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1854B4772902B4CC00C05A87 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		187E7FA4290C06FB00D38452 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		188D696A29126BCF00F805FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18B4D0792901B6F20065CE49 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		18B4D07D2901CDD50065CE49 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		18B4D07F2901CDEA0065CE49 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -64,13 +70,13 @@
 		184E4F432901837900E9DBDD /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				187E7FA3290C065D00D38452 /* Profile */,
 				184E4F522901837A00E9DBDD /* Info.plist */,
 				1854B4742902ABC300C05A87 /* App */,
 				184E4F4F2901837A00E9DBDD /* LaunchScreen.storyboard */,
 				184E4F4D2901837A00E9DBDD /* Assets.xcassets */,
 				18B4D0792901B6F20065CE49 /* TabBarController.swift */,
 				18B4D07D2901CDD50065CE49 /* FeedViewController.swift */,
-				18B4D07F2901CDEA0065CE49 /* ProfileViewController.swift */,
 				18B4D0832901D78D0065CE49 /* PostViewController.swift */,
 				18B4D0812901D6000065CE49 /* Post.swift */,
 				1854B4772902B4CC00C05A87 /* InfoViewController.swift */,
@@ -85,6 +91,17 @@
 				184E4F462901837900E9DBDD /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		187E7FA3290C065D00D38452 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				187E7FA4290C06FB00D38452 /* ProfileHeaderView.swift */,
+				18B4D07F2901CDEA0065CE49 /* ProfileViewController.swift */,
+				188D696A29126BCF00F805FC /* Constants.swift */,
+				18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,11 +175,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B4D07A2901B6F20065CE49 /* TabBarController.swift in Sources */,
+				188D696B29126BCF00F805FC /* Constants.swift in Sources */,
 				18B4D07E2901CDD50065CE49 /* FeedViewController.swift in Sources */,
 				18B4D0842901D78D0065CE49 /* PostViewController.swift in Sources */,
 				18B4D0802901CDEA0065CE49 /* ProfileViewController.swift in Sources */,
+				187E7FA5290C06FB00D38452 /* ProfileHeaderView.swift in Sources */,
 				18B4D0822901D6000065CE49 /* Post.swift in Sources */,
 				184E4F452901837900E9DBDD /* AppDelegate.swift in Sources */,
+				18346E0B290D67D6009F8DAC /* TextFieldWithPadding.swift in Sources */,
 				1854B4782902B4CC00C05A87 /* InfoViewController.swift in Sources */,
 				184E4F472901837900E9DBDD /* SceneDelegate.swift in Sources */,
 			);
