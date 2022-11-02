@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileHeaderView: UIView {
 
-    private var avatarView: UIImageView = {
+    private var avatarImageView: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 65
         view.layer.borderWidth = 3
@@ -20,19 +20,7 @@ class ProfileHeaderView: UIView {
         return view
     }()
 
-    private let statusButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Set status", for: .normal)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = UIColor(red: 52/255, green: 120/255, blue: 246/255, alpha: 1)
-        button.layer.cornerRadius = 4
-        button.layer.shadowOffset = .init(width: 4, height: 4)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.7
-        return button
-    }()
-
-    private let nameLabel: UILabel = {
+    private let fullNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Кошка Плюша"
         label.textColor = .black
@@ -48,16 +36,8 @@ class ProfileHeaderView: UIView {
         return label
     }()
 
-    private let statusBarLayer: UIView = {
-        let layer = UIView()
-        layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height, height: 48)
-        layer.backgroundColor = .white
-        return layer
-    }()
-
-//    Дополнительное задание
     private var statusText = ""
-    private var setStatusTextField: TextFieldWithPadding = {
+    private var statusTextField: TextFieldWithPadding = {
         let tfield = TextFieldWithPadding()
         tfield.backgroundColor = .white
         tfield.layer.cornerRadius = 12
@@ -69,17 +49,31 @@ class ProfileHeaderView: UIView {
         return tfield
     }()
 
+    private let setStatusButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Set status", for: .normal)
+        button.titleLabel?.textColor = .white
+        button.backgroundColor = .tintColor
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = .init(width: 4, height: 4)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        return button
+    }()
+
     override init(frame: CGRect) {
 
         super.init(frame: frame)
-        addSubview(avatarView)
-        addSubview(nameLabel)
+        backgroundColor = .lightGray
+        addSubview(avatarImageView)
+        addSubview(fullNameLabel)
         addSubview(statusLabel)
-        addSubview(statusButton)
-        addSubview(statusBarLayer)
-        addSubview(setStatusTextField)
+        addSubview(setStatusButton)
+        addSubview(statusTextField)
         setupFrames()
         addTarget()
+        
+        translatesAutoresizingMaskIntoConstraints = false
 
     }
 
@@ -88,33 +82,33 @@ class ProfileHeaderView: UIView {
     }
 
     func setupFrames() {
-        avatarView.frame = CGRect(x: Constants.leftMarggin, y: Constants.systemTop + Constants.topMarggin,
+        avatarImageView.frame = CGRect(x: Constants.leftMarggin, y: Constants.systemTop + Constants.topMarggin,
                                   width: Constants.avatar, height: Constants.avatar)
-        nameLabel.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar, y: Constants.systemTop + 27,
+        fullNameLabel.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar, y: Constants.systemTop + 27,
                                  width: Int(UIScreen.main.bounds.width) - (3 * Constants.leftMarggin + Constants.avatar), height: 22)
         statusLabel.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar,
                                    y: Constants.systemTop + 2 * Constants.topMarggin + Constants.avatar - 34 - 18,
                                    width: Int(UIScreen.main.bounds.width) - (3 * Constants.leftMarggin + Constants.avatar), height: 18)
-        statusButton.frame = CGRect(x: Constants.leftMarggin,
+        setStatusButton.frame = CGRect(x: Constants.leftMarggin,
                                     y: Constants.systemTop + Constants.topMarggin + Constants.avatar + 2 * Constants.topMarggin + 22,
                                     width: Int(UIScreen.main.bounds.width) - (2 * Constants.leftMarggin), height: 50)
-        setStatusTextField.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar,
+        statusTextField.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar,
                                           y: Constants.systemTop + 2 * Constants.topMarggin + Constants.avatar - 34 + Constants.gap,
                                           width: Int(UIScreen.main.bounds.width) - (3 * Constants.topMarggin + Constants.avatar), height: 40)
     }
 
     func addTarget() {
-        statusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        setStatusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
     }
     @objc
     func buttonPressed() {
         statusLabel.text = statusText
-        setStatusTextField.text = ""
+        statusTextField.text = ""
     }
     @objc
     func statusTextChanged( _textField: UITextField) {
-        statusText = setStatusTextField.text ?? ""
+        statusText = statusTextField.text ?? ""
     }
 
 }
