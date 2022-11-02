@@ -9,7 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
 
-    let avatarImage = UIImage(named: "cat")
     private var avatarView: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 65
@@ -17,6 +16,7 @@ class ProfileHeaderView: UIView {
         view.layer.borderColor = UIColor.white.cgColor
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
+        view.image = UIImage(named: "cat")
         return view
     }()
 
@@ -72,7 +72,6 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
 
         super.init(frame: frame)
-        avatarView.image = avatarImage
         addSubview(avatarView)
         addSubview(nameLabel)
         addSubview(statusLabel)
@@ -89,19 +88,19 @@ class ProfileHeaderView: UIView {
     }
 
     func setupFrames() {
-        let gap = 16
-        let avatar = 130
-        let header = 44
-        let statusbar = 48
-        avatarView.frame = CGRect(x: gap, y: statusbar + header + gap, width: avatar, height: avatar)
-        nameLabel.frame = CGRect(x: gap + avatar + gap, y: statusbar + header + 27,
-                                 width: Int(UIScreen.main.bounds.width) - (3 * gap + avatar), height: 22)
-        statusLabel.frame = CGRect(x: gap + avatar + gap, y: statusbar + header + gap + avatar + gap - 34 - 18,
-                                   width: Int(UIScreen.main.bounds.width) - (3 * gap + avatar), height: 18)
-        statusButton.frame = CGRect(x: gap, y: statusbar + header + gap + avatar + gap + 22 + gap,
-                                    width: Int(UIScreen.main.bounds.width) - (2 * gap), height: 50)
-        setStatusTextField.frame = CGRect(x: gap + avatar + gap, y: statusbar + header + gap + avatar + gap - 34 + gap,
-                                          width: Int(UIScreen.main.bounds.width) - (3 * gap + avatar), height: 40)
+        avatarView.frame = CGRect(x: Constants.leftMarggin, y: Constants.systemTop + Constants.topMarggin,
+                                  width: Constants.avatar, height: Constants.avatar)
+        nameLabel.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar, y: Constants.systemTop + 27,
+                                 width: Int(UIScreen.main.bounds.width) - (3 * Constants.leftMarggin + Constants.avatar), height: 22)
+        statusLabel.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar,
+                                   y: Constants.systemTop + 2 * Constants.topMarggin + Constants.avatar - 34 - 18,
+                                   width: Int(UIScreen.main.bounds.width) - (3 * Constants.leftMarggin + Constants.avatar), height: 18)
+        statusButton.frame = CGRect(x: Constants.leftMarggin,
+                                    y: Constants.systemTop + Constants.topMarggin + Constants.avatar + 2 * Constants.topMarggin + 22,
+                                    width: Int(UIScreen.main.bounds.width) - (2 * Constants.leftMarggin), height: 50)
+        setStatusTextField.frame = CGRect(x: 2 * Constants.leftMarggin + Constants.avatar,
+                                          y: Constants.systemTop + 2 * Constants.topMarggin + Constants.avatar - 34 + Constants.gap,
+                                          width: Int(UIScreen.main.bounds.width) - (3 * Constants.topMarggin + Constants.avatar), height: 40)
     }
 
     func addTarget() {
