@@ -34,20 +34,16 @@ class ProfileViewController: UIViewController {
     }
 
     func constraints() {
-
         NSLayoutConstraint.activate([
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 270)
-        ])
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 265),
 
-        NSLayoutConstraint.activate([
             newButton.leftAnchor.constraint(equalTo: view.leftAnchor),
             newButton.rightAnchor.constraint(equalTo: view.rightAnchor),
             newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-
     }
     
 }

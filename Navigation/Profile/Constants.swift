@@ -8,12 +8,15 @@
 import Foundation
 
 struct Constants {
-    static let leftMarggin = 16
-    static let rightMarggin = 16
-    static let topMarggin = 16
+    static let standartMarggin = 16
+    static let fullNameTopMargin = 27
+    static let statusBottomMargin = 34
     static let avatar = 130
     static let header = 44
     static let statusbar = 48
-    static let gap = 8
-    static let systemTop = 0 //header + statusbar
+    static let fullNameFontSize = 18
+    static let statusFontSize = 14
+    static let setStatusFontSize = 15
+    static let setStatusBtnHeight = 50
+    static let setStatusTFHeight = 40
 }
