@@ -15,6 +15,7 @@
 		1854B4782902B4CC00C05A87 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854B4772902B4CC00C05A87 /* InfoViewController.swift */; };
 		187E7FA5290C06FB00D38452 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E7FA4290C06FB00D38452 /* ProfileHeaderView.swift */; };
 		188D696B29126BCF00F805FC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188D696A29126BCF00F805FC /* Constants.swift */; };
+		18B2BEB1291A889900F26211 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B2BEB0291A889900F26211 /* LogInViewController.swift */; };
 		18B4D07A2901B6F20065CE49 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4D0792901B6F20065CE49 /* TabBarController.swift */; };
 		18B4D07E2901CDD50065CE49 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4D07D2901CDD50065CE49 /* FeedViewController.swift */; };
 		18B4D0802901CDEA0065CE49 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B4D07F2901CDEA0065CE49 /* ProfileViewController.swift */; };
@@ -33,6 +34,7 @@
 		1854B4772902B4CC00C05A87 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		187E7FA4290C06FB00D38452 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		188D696A29126BCF00F805FC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		18B2BEB0291A889900F26211 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		18B4D0792901B6F20065CE49 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		18B4D07D2901CDD50065CE49 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		18B4D07F2901CDEA0065CE49 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -70,12 +72,12 @@
 		184E4F432901837900E9DBDD /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				18B4D0792901B6F20065CE49 /* TabBarController.swift */,
 				188D696C29127AB100F805FC /* Feed */,
 				187E7FA3290C065D00D38452 /* Profile */,
 				184E4F522901837A00E9DBDD /* Info.plist */,
 				1854B4742902ABC300C05A87 /* App */,
 				184E4F4D2901837A00E9DBDD /* Assets.xcassets */,
-				18B4D0792901B6F20065CE49 /* TabBarController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -97,6 +99,7 @@
 				187E7FA4290C06FB00D38452 /* ProfileHeaderView.swift */,
 				188D696A29126BCF00F805FC /* Constants.swift */,
 				18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */,
+				18B2BEB0291A889900F26211 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				187E7FA5290C06FB00D38452 /* ProfileHeaderView.swift in Sources */,
 				18B4D0822901D6000065CE49 /* Post.swift in Sources */,
 				184E4F452901837900E9DBDD /* AppDelegate.swift in Sources */,
+				18B2BEB1291A889900F26211 /* LogInViewController.swift in Sources */,
 				18346E0B290D67D6009F8DAC /* TextFieldWithPadding.swift in Sources */,
 				1854B4782902B4CC00C05A87 /* InfoViewController.swift in Sources */,
 				184E4F472901837900E9DBDD /* SceneDelegate.swift in Sources */,
