@@ -83,7 +83,7 @@ class ProfileHeaderView: UIView {
 
     func setupFrames() {
         avatarImageView.frame = CGRect(x: Constants.standartMarggin,
-                                       y: Constants.standartMarggin,
+                                       y: 0,//Constants.standartMarggin,
                                        width: Constants.avatar,
                                        height: Constants.avatar)
         fullNameLabel.frame = CGRect(x: 2 * Constants.standartMarggin + Constants.avatar,
