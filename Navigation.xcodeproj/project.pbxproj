@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18113B33291E5FB700EF785A /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18113B32291E5FB700EF785A /* LoginButton.swift */; };
 		18346E0B290D67D6009F8DAC /* TextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */; };
 		184E4F452901837900E9DBDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4F442901837900E9DBDD /* AppDelegate.swift */; };
 		184E4F472901837900E9DBDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4F462901837900E9DBDD /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18113B32291E5FB700EF785A /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithPadding.swift; sourceTree = "<group>"; };
 		184E4F412901837900E9DBDD /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		184E4F442901837900E9DBDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				188D696A29126BCF00F805FC /* Constants.swift */,
 				18346E0A290D67D6009F8DAC /* TextFieldWithPadding.swift */,
 				18B2BEB0291A889900F26211 /* LogInViewController.swift */,
+				18113B32291E5FB700EF785A /* LoginButton.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				18346E0B290D67D6009F8DAC /* TextFieldWithPadding.swift in Sources */,
 				1854B4782902B4CC00C05A87 /* InfoViewController.swift in Sources */,
 				184E4F472901837900E9DBDD /* SceneDelegate.swift in Sources */,
+				18113B33291E5FB700EF785A /* LoginButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

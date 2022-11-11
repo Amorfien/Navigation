@@ -64,19 +64,9 @@ class LogInViewController: UIViewController {
         return pasword
     }()
 
-    private let loginButton: UIButton = {
-        let button = UIButton()
+    private let loginButton: LoginButton = {
+        let button = LoginButton()
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
-
-//        FIXME: тут не разобрался с состояниями из макета :(
-        switch button.state {
-        case .selected: button.alpha = 0.2
-        case .highlighted: button.alpha = 0.2
-        case .disabled: button.alpha = 0.2
-        default:
-            button.alpha = 1
-        }
-
         button.setTitle("Log In", for: .normal)
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 10
@@ -139,7 +129,8 @@ class LogInViewController: UIViewController {
             loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor)
+            loginButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            loginButton.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor)
         ])
     }
 
@@ -151,6 +142,7 @@ class LogInViewController: UIViewController {
         let profileView = ProfileViewController()
         navigationController?.pushViewController(profileView, animated: true)
     }
+    
 //  MARK: - убираем клавиатуру по нажатию в любом месте экрана
     private func setupGestures() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHideKbd))
@@ -160,9 +152,8 @@ class LogInViewController: UIViewController {
         view.endEditing(true)
         scrollView.setContentOffset(.zero, animated: true)
     }
+
 //  MARK: - сдвигаем контент при перекрытии клавиатурой
-//    разница в отступах на разных моделях всё же имеется (SE, 14, 14 PRO)
-//    либо из-за разницы точек-пикселей, либо из-за разницы размера статус-бара (т.к. привязка сверху к SafeArea)
     @objc func kbdShow(notification: NSNotification) {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let bottomButtonY = loginButton.frame.origin.y + loginButton.frame.height
@@ -175,6 +166,5 @@ class LogInViewController: UIViewController {
     @objc func kbdHide(notification: NSNotification) {
         viewTapHideKbd()
     }
-
 
 }
