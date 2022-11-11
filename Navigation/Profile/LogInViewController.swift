@@ -26,7 +26,7 @@ class LogInViewController: UIViewController {
         let view = UIStackView()
         view.axis = .vertical
         view.backgroundColor = .systemGray6
-        view.distribution = .fillEqually
+        view.distribution = .fillProportionally
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 0.5
         view.layer.cornerRadius = 10
@@ -39,16 +39,20 @@ class LogInViewController: UIViewController {
         let login = TextFieldWithPadding()
         login.placeholder = "Email or phone"
         login.keyboardType = .emailAddress
-
-        login.layer.borderWidth = 0.5
-        login.layer.borderColor = UIColor.lightGray.cgColor // промежуточную линию прописал в одном из TextField. Верно?
-
         login.textColor = .black
         login.font = UIFont.systemFont(ofSize: 16)
         login.tintColor = UIColor(named: "ColorSet")
         login.autocapitalizationType = .none
         return login
     }()
+
+    private let lineView: UIView = {
+        let line = UIView()
+        line.backgroundColor = .lightGray
+        line.translatesAutoresizingMaskIntoConstraints = false
+        return line
+    }()
+
     private let passwordTextField: TextFieldWithPadding = {
         let pasword = TextFieldWithPadding()
         pasword.placeholder = "Password"
@@ -91,6 +95,7 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(stackView)
         scrollView.addSubview(loginButton)
         stackView.addArrangedSubview(loginTextField)
+        stackView.addArrangedSubview(lineView)
         stackView.addArrangedSubview(passwordTextField)
 
         constraints()
@@ -126,6 +131,10 @@ class LogInViewController: UIViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackView.heightAnchor.constraint(equalToConstant: 100),
+
+            lineView.heightAnchor.constraint(equalToConstant: 0.5),
+            lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
 
             loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16),
             loginButton.heightAnchor.constraint(equalToConstant: 50),
