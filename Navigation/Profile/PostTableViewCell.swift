@@ -69,25 +69,25 @@ class PostTableViewCell: UITableViewCell {
         contentView.addSubview(viewsLabel)
 
         NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            authorLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
-            authorLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: 16),
+            authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CGFloat(Constants.standartMarggin)),
+            authorLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: CGFloat(Constants.standartMarggin)),
+            authorLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: CGFloat(Constants.standartMarggin)),
 
             postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 12),
 
-            descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            descriptionText.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
-            descriptionText.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
+            descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: CGFloat(Constants.standartMarggin)),
+            descriptionText.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: CGFloat(Constants.standartMarggin)),
+            descriptionText.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -CGFloat(Constants.standartMarggin)),
 
-            likesLabel.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: 16),
+            likesLabel.topAnchor.constraint(equalTo: descriptionText.bottomAnchor, constant: CGFloat(Constants.standartMarggin)),
             likesLabel.leftAnchor.constraint(equalTo: descriptionText.leftAnchor),
-            likesLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width / 2.1) - 16),
-            likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            likesLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width / 2) - CGFloat(Constants.standartMarggin)),
+            likesLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -CGFloat(Constants.standartMarggin)),
 
             viewsLabel.topAnchor.constraint(equalTo: likesLabel.topAnchor),
-            viewsLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width / 2.1) - 16),
+            viewsLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width / 2) - CGFloat(Constants.standartMarggin)),
             viewsLabel.rightAnchor.constraint(equalTo: descriptionText.rightAnchor)
         ])
     }
