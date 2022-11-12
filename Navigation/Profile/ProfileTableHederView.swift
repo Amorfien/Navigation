@@ -72,7 +72,7 @@ class ProfileHeaderView: UIView {
         addSubview(statusTextField)
         setupFrames()
         addTarget()
-        
+
         translatesAutoresizingMaskIntoConstraints = false
 
     }

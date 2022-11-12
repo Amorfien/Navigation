@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(tableView)
         setup()
+        setupGestures()
     }
 
     func setup() {
@@ -37,6 +38,15 @@ class ProfileViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    //  MARK: - убираем клавиатуру по нажатию в любом месте экрана
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHideKbd))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc func viewTapHideKbd() {
+        view.endEditing(true)
     }
 
 }
