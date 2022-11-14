@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
         tView.delegate = self
         tView.showsVerticalScrollIndicator = false
         tView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
+        tView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
         tView.translatesAutoresizingMaskIntoConstraints = false
         return tView
     }()
@@ -26,25 +27,15 @@ class ProfileViewController: UIViewController {
         view.backgroundColor = .lightGray
         view.addSubview(tableView)
         setup()
-        setupGestures()
     }
 
     func setup() {
         NSLayoutConstraint.activate([
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-    }
-
-    //  MARK: - убираем клавиатуру по нажатию в любом месте экрана
-    private func setupGestures() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHideKbd))
-        view.addGestureRecognizer(tapGesture)
-    }
-    @objc func viewTapHideKbd() {
-        view.endEditing(true)
     }
 
 }
@@ -52,14 +43,36 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        postArray.count
+        if section == 0 {
+            return 1
+        } else {
+            return postArray.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = PostTableViewCell()
-        cell.backgroundColor = .white
-        cell.fillData(with: postArray, indexPath: indexPath)
-        return cell
+        if indexPath.section == 0 {
+            let cell = PhotosTableViewCell()
+            cell.backgroundColor = .white
+            return cell
+        } else {
+            let cell = PostTableViewCell()
+            cell.backgroundColor = .white
+            cell.fillData(with: postArray, indexPath: indexPath)
+            return cell
+        }
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+
+    // отрисовка маленькой перемычки между секциями с помощью футера с пустым тайтлом
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return (section == 0 ? " " : nil)
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
     }
 
     // Хэддер _секции_
@@ -68,10 +81,19 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         let sectionHeader = ProfileHeaderView()
         return sectionHeader
     }
-     */
+
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 265
+    }
+     */
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath)
+        tableView.deselectRow(at: [0, 0], animated: true)
+        if indexPath == [0, 0] {
+            navigationController?.pushViewController(PhotosViewController(), animated: true)
+        }
     }
 
 }
