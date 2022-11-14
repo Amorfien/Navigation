@@ -54,7 +54,7 @@ class ProfileHeaderView: UIView {
         button.setTitle("Set status", for: .normal)
         button.titleLabel?.textColor = .white
         button.backgroundColor = .tintColor
-        button.layer.cornerRadius = 4
+        button.layer.cornerRadius = 12
         button.layer.shadowOffset = .init(width: 4, height: 4)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
@@ -72,7 +72,7 @@ class ProfileHeaderView: UIView {
         addSubview(statusTextField)
         setupFrames()
         addTarget()
-        
+
         translatesAutoresizingMaskIntoConstraints = false
 
     }
