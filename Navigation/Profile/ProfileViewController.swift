@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tView = UITableView()
         tView.backgroundColor = .lightGray
-//        tView.tableHeaderView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 265))
+        tView.tableHeaderView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 265))
         tView.dataSource = self
         tView.delegate = self
         tView.showsVerticalScrollIndicator = false
@@ -62,10 +62,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    // Хэддер _секции_
+    /*
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeader = ProfileHeaderView()
         return sectionHeader
     }
+     */
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 265
