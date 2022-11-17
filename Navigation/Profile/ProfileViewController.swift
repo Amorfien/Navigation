@@ -75,21 +75,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         return 8
     }
 
-    // Хэддер _секции_
-    /*
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeader = ProfileHeaderView()
-        return sectionHeader
-    }
-
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 265
-    }
-     */
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath)
         tableView.deselectRow(at: [0, 0], animated: true)
         if indexPath == [0, 0] {
             navigationController?.pushViewController(PhotosViewController(), animated: true)
