@@ -29,6 +29,6 @@ class TabBarController: UITabBarController {
         secondTabNavigationController.tabBarItem = item2
 
         UITabBar.appearance().tintColor = .black
-        UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().backgroundColor = .systemGray6
     }
 }
