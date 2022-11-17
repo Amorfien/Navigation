@@ -172,7 +172,6 @@ class ProfileHeaderView: UIView {
     }
     @objc func closePressed() {
         UIView.animate(withDuration: 0.3) {
-            self.closeButton.isHidden = true
             self.closeButton.alpha = 0
             UIView.animate(withDuration: 0.5, delay: 0.3) {
                 self.avatarImageView.center = CGPoint(x: Constants.standartMarggin + Constants.avatar / 2,
@@ -180,10 +179,11 @@ class ProfileHeaderView: UIView {
                 self.avatarImageView.transform = .identity
                 self.avatarImageView.layer.cornerRadius = CGFloat(Constants.avatar / 2)
                 self.avatarImageView.layer.borderWidth = 3
-                self.backgroundView.isHidden = true
                 self.backgroundView.alpha = 0
             }
         }
+//        self.closeButton.isHidden = true
+//        self.backgroundView.isHidden = true
     }
 
 }
