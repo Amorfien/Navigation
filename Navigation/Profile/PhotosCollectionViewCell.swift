@@ -35,8 +35,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
             self.photo.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.photo.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.photo.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-//            photo.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 3),
-//            photo.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 3),
             photo.widthAnchor.constraint(lessThanOrEqualToConstant: (UIScreen.main.bounds.width - 32.5) / 3),
             photo.heightAnchor.constraint(lessThanOrEqualToConstant: (UIScreen.main.bounds.width - 32.5) / 3)
         ])
