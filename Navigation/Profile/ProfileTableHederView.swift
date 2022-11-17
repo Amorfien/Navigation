@@ -16,6 +16,7 @@ class ProfileHeaderView: UIView {
         view.layer.borderColor = UIColor.white.cgColor
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFit
+        view.isUserInteractionEnabled = true
         view.image = UIImage(named: "cat")
         return view
     }()
@@ -61,17 +62,40 @@ class ProfileHeaderView: UIView {
         return button
     }()
 
+    private let backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0
+        view.isHidden = true
+        return view
+    }()
+
+    private let closeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("✕", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 28)
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 22
+        button.layer.borderColor = UIColor.white.cgColor
+        button.isHidden = true
+        button.alpha = 0
+        return button
+    }()
+
     override init(frame: CGRect) {
 
         super.init(frame: frame)
         backgroundColor = .lightGray
-        addSubview(avatarImageView)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
         addSubview(setStatusButton)
         addSubview(statusTextField)
+        addSubview(backgroundView)
+        addSubview(avatarImageView)
+        addSubview(closeButton)
         setupFrames()
         addTarget()
+        setupGestures()
 
         translatesAutoresizingMaskIntoConstraints = false
 
@@ -102,11 +126,14 @@ class ProfileHeaderView: UIView {
                                        y: 2 * Constants.standartMarggin + Constants.avatar - Constants.statusBottomMargin + Constants.standartMarggin / 2,
                                        width: Int(UIScreen.main.bounds.width) - (3 * Constants.standartMarggin + Constants.avatar),
                                        height: Constants.setStatusTFHeight)
+        backgroundView.frame = CGRect(x: 0, y: -50, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 50)
+        closeButton.frame = CGRect(x: Int(UIScreen.main.bounds.width) - 50, y: Constants.standartMarggin, width: 44, height: 44)
     }
 
     func addTarget() {
         setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
     }
     @objc
     func buttonPressed() {
@@ -117,6 +144,46 @@ class ProfileHeaderView: UIView {
     @objc
     func statusTextChanged( _textField: UITextField) {
         statusText = statusTextField.text ?? ""
+    }
+
+    // обработка жестов
+    private func setupGestures() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
+        self.avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    @objc private func tapGesture() {
+        animationAvatar()
+    }
+
+    private func animationAvatar() {
+        UIView.animate(withDuration: 0.5) {
+            self.avatarImageView.center = self.superview!.center
+            self.avatarImageView.transform = CGAffineTransform(scaleX: UIScreen.main.bounds.width / CGFloat(Constants.avatar),
+                                                               y: UIScreen.main.bounds.width / CGFloat(Constants.avatar))
+            self.avatarImageView.layer.cornerRadius = 0
+            self.avatarImageView.layer.borderWidth = 1
+            self.backgroundView.isHidden = false
+            self.backgroundView.alpha = 0.7
+            UIView.animate(withDuration: 0.3, delay: 0.5) {
+                self.closeButton.isHidden = false
+                self.closeButton.alpha = 1
+            }
+        }
+    }
+    @objc func closePressed() {
+        UIView.animate(withDuration: 0.3) {
+            self.closeButton.isHidden = true
+            self.closeButton.alpha = 0
+            UIView.animate(withDuration: 0.5, delay: 0.3) {
+                self.avatarImageView.center = CGPoint(x: Constants.standartMarggin + Constants.avatar / 2,
+                                                      y: Constants.standartMarggin + Constants.avatar / 2)
+                self.avatarImageView.transform = .identity
+                self.avatarImageView.layer.cornerRadius = CGFloat(Constants.avatar / 2)
+                self.avatarImageView.layer.borderWidth = 3
+                self.backgroundView.isHidden = true
+                self.backgroundView.alpha = 0
+            }
+        }
     }
 
 }
