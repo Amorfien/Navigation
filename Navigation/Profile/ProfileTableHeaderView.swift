@@ -67,6 +67,7 @@ class ProfileHeaderView: UIView {
         view.backgroundColor = .black
         view.alpha = 0
         view.isHidden = true
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
@@ -79,6 +80,7 @@ class ProfileHeaderView: UIView {
         button.layer.borderColor = UIColor.white.cgColor
         button.isHidden = true
         button.alpha = 0
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -94,10 +96,9 @@ class ProfileHeaderView: UIView {
         addSubview(avatarImageView)
         addSubview(closeButton)
         setupFrames()
+        setupConstraints()
         addTarget()
         setupGestures()
-
-        translatesAutoresizingMaskIntoConstraints = false
 
     }
 
@@ -126,8 +127,22 @@ class ProfileHeaderView: UIView {
                                        y: 2 * Constants.standartMarggin + Constants.avatar - Constants.statusBottomMargin + Constants.standartMarggin / 2,
                                        width: Int(UIScreen.main.bounds.width) - (3 * Constants.standartMarggin + Constants.avatar),
                                        height: Constants.setStatusTFHeight)
-        backgroundView.frame = CGRect(x: 0, y: -50, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 50)
-        closeButton.frame = CGRect(x: Int(UIScreen.main.bounds.width) - 50, y: Constants.standartMarggin, width: 44, height: 44)
+//        backgroundView.frame = CGRect(x: 0, y: -50, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 50)
+//        closeButton.frame = CGRect(x: Int(UIScreen.main.bounds.width) - 50, y: Constants.standartMarggin, width: 44, height: 44)
+    }
+
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -50),
+            backgroundView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            backgroundView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 3),
+
+            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
+            closeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            closeButton.widthAnchor.constraint(equalToConstant: 44),
+            closeButton.heightAnchor.constraint(equalToConstant: 44)
+        ])
     }
 
     func addTarget() {
@@ -153,6 +168,7 @@ class ProfileHeaderView: UIView {
     }
     @objc private func tapGesture() {
         animationAvatar()
+        self.superview?.viewWithTag(11)?.isUserInteractionEnabled = false
     }
 
     private func animationAvatar() {
@@ -182,6 +198,7 @@ class ProfileHeaderView: UIView {
                 self.backgroundView.alpha = 0
             }
         }
+        self.superview?.viewWithTag(11)?.isUserInteractionEnabled = true
 //        self.closeButton.isHidden = true
 //        self.backgroundView.isHidden = true
     }
