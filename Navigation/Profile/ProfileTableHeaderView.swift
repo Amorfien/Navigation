@@ -127,18 +127,16 @@ class ProfileHeaderView: UIView {
                                        y: 2 * Constants.standartMarggin + Constants.avatar - Constants.statusBottomMargin + Constants.standartMarggin / 2,
                                        width: Int(UIScreen.main.bounds.width) - (3 * Constants.standartMarggin + Constants.avatar),
                                        height: Constants.setStatusTFHeight)
-//        backgroundView.frame = CGRect(x: 0, y: -50, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 50)
-//        closeButton.frame = CGRect(x: Int(UIScreen.main.bounds.width) - 50, y: Constants.standartMarggin, width: 44, height: 44)
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -50),
+            backgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -60),
             backgroundView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            backgroundView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 3),
+            backgroundView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height),
 
-            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32),
+            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
             closeButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             closeButton.widthAnchor.constraint(equalToConstant: 44),
             closeButton.heightAnchor.constraint(equalToConstant: 44)
@@ -168,12 +166,15 @@ class ProfileHeaderView: UIView {
     }
     @objc private func tapGesture() {
         animationAvatar()
+        avatarImageView.isUserInteractionEnabled = false
         self.superview?.viewWithTag(11)?.isUserInteractionEnabled = false
+        ProfileViewController.tableView.isScrollEnabled = false
     }
 
     private func animationAvatar() {
         UIView.animate(withDuration: 0.5) {
-            self.avatarImageView.center = self.superview!.center
+            self.avatarImageView.center.x = self.superview!.center.x
+            self.avatarImageView.center.y = self.superview!.center.y - 40
             self.avatarImageView.transform = CGAffineTransform(scaleX: UIScreen.main.bounds.width / CGFloat(Constants.avatar),
                                                                y: UIScreen.main.bounds.width / CGFloat(Constants.avatar))
             self.avatarImageView.layer.cornerRadius = 0
@@ -199,8 +200,10 @@ class ProfileHeaderView: UIView {
             }
         }
         self.superview?.viewWithTag(11)?.isUserInteractionEnabled = true
-//        self.closeButton.isHidden = true
-//        self.backgroundView.isHidden = true
+        ProfileViewController.tableView.isScrollEnabled = true
+        avatarImageView.isUserInteractionEnabled = true
+        closeButton.isHidden = true
+        backgroundView.isHidden = true
     }
 
 }

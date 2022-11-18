@@ -9,12 +9,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private lazy var tableView: UITableView = {
+    static var tableView: UITableView = {
         let tView = UITableView()
         tView.backgroundColor = .lightGray
         tView.tableHeaderView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 265))
-        tView.dataSource = self
-        tView.delegate = self
+//        tView.dataSource = self
+//        tView.delegate = self
         tView.showsVerticalScrollIndicator = false
         tView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         tView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
@@ -25,16 +25,19 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        view.addSubview(tableView)
+        view.addSubview(Self.tableView)
+        Self.tableView.dataSource = self
+        Self.tableView.delegate = self
+
         setup()
     }
 
     private func setup() {
         NSLayoutConstraint.activate([
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            Self.tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            Self.tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            Self.tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            Self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
