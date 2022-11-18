@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
         setup()
     }
 
-    func setup() {
+    private func setup() {
         NSLayoutConstraint.activate([
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
