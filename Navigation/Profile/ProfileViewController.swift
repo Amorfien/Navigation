@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
     static var tableView: UITableView = {
         let tView = UITableView()
         tView.backgroundColor = .lightGray
-        tView.tableHeaderView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 265))
+        tView.tableHeaderView = ProfileTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 265))
 //        tView.dataSource = self
 //        tView.delegate = self
         tView.showsVerticalScrollIndicator = false

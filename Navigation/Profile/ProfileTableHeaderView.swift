@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileTableHeaderView: UIView {
 
     private var avatarImageView: UIImageView = {
         let view = UIImageView()
