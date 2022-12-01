@@ -34,8 +34,8 @@ class ProfileViewController: UIViewController {
 
     private func setup() {
         NSLayoutConstraint.activate([
-            Self.tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            Self.tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            Self.tableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            Self.tableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             Self.tableView.topAnchor.constraint(equalTo: view.topAnchor),
             Self.tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])

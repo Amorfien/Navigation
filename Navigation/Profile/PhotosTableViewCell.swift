@@ -25,11 +25,10 @@ class PhotosTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let forwardLabel: UILabel = {
-        let forward = UILabel()
-        forward.font = UIFont.systemFont(ofSize: 24, weight: .thin)
-        forward.textColor = .black
-        forward.text = "➔"
+    private let forwardImage: UIImageView = {
+        let forward = UIImageView()
+        forward.image = UIImage(systemName: "arrow.forward")
+        forward.tintColor = .black
         forward.translatesAutoresizingMaskIntoConstraints = false
         return forward
     }()
@@ -94,7 +93,7 @@ class PhotosTableViewCell: UITableViewCell {
     private func setupUI() {
         contentView.addSubview(titleStackView)
         titleStackView.addArrangedSubview(photoLabel)
-        titleStackView.addArrangedSubview(forwardLabel)
+        titleStackView.addArrangedSubview(forwardImage)
         contentView.addSubview(photoStackView)
         photoStackView.addArrangedSubview(previewImage1)
         photoStackView.addArrangedSubview(previewImage2)
@@ -102,9 +101,9 @@ class PhotosTableViewCell: UITableViewCell {
         photoStackView.addArrangedSubview(previewImage4)
 
         NSLayoutConstraint.activate([
-            titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-            titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            titleStackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 12),
+            titleStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            titleStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -12),
 
             photoStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 12),
             photoStackView.leadingAnchor.constraint(equalTo: titleStackView.leadingAnchor),
