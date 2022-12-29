@@ -27,7 +27,6 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         view.addSubview(Self.tableView)
         Self.tableView.dataSource = self
         Self.tableView.delegate = self
