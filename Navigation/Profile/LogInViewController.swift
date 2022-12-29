@@ -35,7 +35,7 @@ class LogInViewController: UIViewController {
         return view
     }()
 
-    private let loginTextField: TextFieldWithPadding = {
+    private lazy var loginTextField: TextFieldWithPadding = {
         let login = TextFieldWithPadding()
         login.placeholder = "Email or phone"
         login.keyboardType = .emailAddress
@@ -43,6 +43,9 @@ class LogInViewController: UIViewController {
         login.font = UIFont.systemFont(ofSize: 16)
         login.tintColor = UIColor(named: "ColorSet")
         login.autocapitalizationType = .none
+        login.tag = 0
+        login.returnKeyType = .continue
+        login.delegate = self
         return login
     }()
 
@@ -53,24 +56,28 @@ class LogInViewController: UIViewController {
         return line
     }()
 
-    private let passwordTextField: TextFieldWithPadding = {
-        let pasword = TextFieldWithPadding()
-        pasword.placeholder = "Password"
-        pasword.isSecureTextEntry = true
-        pasword.textColor = .black
-        pasword.font = UIFont.systemFont(ofSize: 16)
-        pasword.tintColor = UIColor(named: "ColorSet")
-        pasword.autocapitalizationType = .none
-        return pasword
+    private lazy var passwordTextField: TextFieldWithPadding = {
+        let password = TextFieldWithPadding()
+        password.placeholder = "Password"
+        password.isSecureTextEntry = true
+        password.textColor = .black
+        password.font = UIFont.systemFont(ofSize: 16)
+        password.tintColor = UIColor(named: "ColorSet")
+        password.autocapitalizationType = .none
+        password.tag = 1
+        password.returnKeyType = .done
+        password.delegate = self
+        return password
     }()
 
-    private let loginButton: LoginButton = {
+    private lazy var loginButton: LoginButton = {
         let button = LoginButton()
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         button.setTitle("Log In", for: .normal)
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(tapOnBtn), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -90,7 +97,6 @@ class LogInViewController: UIViewController {
 
         constraints()
         setupGestures()
-        addTarget()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +111,7 @@ class LogInViewController: UIViewController {
     }
 
 //  MARK: - Методы
-    func constraints() {
+    private func constraints() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -134,11 +140,8 @@ class LogInViewController: UIViewController {
         ])
     }
 
-    func addTarget() {
-        loginButton.addTarget(self, action: #selector(tapOnBtn), for: .touchUpInside)
-    }
-    @objc
-    func tapOnBtn() {
+
+    @objc private func tapOnBtn() {
         let profileView = ProfileViewController()
         navigationController?.pushViewController(profileView, animated: true)
     }
@@ -148,13 +151,13 @@ class LogInViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapHideKbd))
         view.addGestureRecognizer(tapGesture)
     }
-    @objc func viewTapHideKbd() {
+    @objc private func viewTapHideKbd() {
         view.endEditing(true)
         scrollView.setContentOffset(.zero, animated: true)
     }
 
 //  MARK: - сдвигаем контент при перекрытии клавиатурой
-    @objc func kbdShow(notification: NSNotification) {
+    @objc private func kbdShow(notification: NSNotification) {
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let bottomButtonY = loginButton.frame.origin.y + loginButton.frame.height
             let offset = UIScreen.main.bounds.height - kbdSize.height - bottomButtonY - 60
@@ -163,8 +166,24 @@ class LogInViewController: UIViewController {
             }
         }
     }
-    @objc func kbdHide(notification: NSNotification) {
+    @objc private func kbdHide(notification: NSNotification) {
         viewTapHideKbd()
+    }
+
+}
+
+// MARK: - Extensions
+
+extension LogInViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            passwordTextField.becomeFirstResponder()
+            return true
+        } else {
+            viewTapHideKbd()
+            return true
+        }
     }
 
 }
