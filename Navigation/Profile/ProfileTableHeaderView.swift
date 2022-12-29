@@ -87,7 +87,6 @@ class ProfileTableHeaderView: UIView {
     override init(frame: CGRect) {
 
         super.init(frame: frame)
-        backgroundColor = .lightGray
         addSubview(fullNameLabel)
         addSubview(statusLabel)
         addSubview(setStatusButton)
