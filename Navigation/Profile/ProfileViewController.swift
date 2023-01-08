@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
 
     static var tableView: UITableView = {
         let tView = UITableView()
+        #if DEBUG
+        tView.backgroundColor = .systemYellow
+        #else
         tView.backgroundColor = .lightGray
+        #endif
         tView.tableHeaderView = ProfileTableHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 265))
-//        tView.dataSource = self
-//        tView.delegate = self
         tView.showsVerticalScrollIndicator = false
         tView.register(PostTableViewCell.self, forCellReuseIdentifier: "PostTableViewCell")
         tView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "PhotosTableViewCell")
@@ -24,7 +27,6 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
         view.addSubview(Self.tableView)
         Self.tableView.dataSource = self
         Self.tableView.delegate = self
@@ -56,11 +58,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = PhotosTableViewCell()
-            cell.backgroundColor = .white
             return cell
         } else {
             let cell = PostTableViewCell()
-            cell.backgroundColor = .white
             cell.fillData(with: postArray, indexPath: indexPath)
             return cell
         }

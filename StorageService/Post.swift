@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Post {
+public struct Post {
 
-    var author: String
-    var description: String
-    var image: String
-    var likes: Int
-    var views: Int
+    public var author: String
+    public var description: String
+    public var image: String
+    public var likes: Int
+    public var views: Int
 
 }
 
@@ -38,4 +38,4 @@ let post4 = Post(author: "vc.ru", description: """
                 Выбрали популярные подборки пользователей и материалы редакции о нейросетях, которые могут по текстовому запросу отредактировать изображение, нарисовать новое, «придумать» к нему описание, «раскрасить» чёрно-белую картинку и другое
                 """, image: "neuro", likes: 268, views: 666)
 
-var postArray: [Post] = [post1, post2, post3, post4]
+public var postArray: [Post] = [post1, post2, post3, post4]
