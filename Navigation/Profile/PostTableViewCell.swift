@@ -7,6 +7,7 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
 
@@ -95,8 +96,14 @@ class PostTableViewCell: UITableViewCell {
     }
 
     func fillData(with data: [Post], indexPath: IndexPath) {
+        // MARK: Применение фильтра к изображениям. Результат применения фильтров с параметрами на выходе сильно зависит от разрешения исходной картинки.
+        let imageProcessor = ImageProcessor()
+        imageProcessor.processImage(sourceImage: UIImage(named: postArray[indexPath.row].image)!, filter: .crystallize(radius: 5)) { sourceImage in
+            postImageView.image = sourceImage
+        }
+
         authorLabel.text = postArray[indexPath.row].author
-        postImageView.image = UIImage(named: postArray[indexPath.row].image)
+//        postImageView.image = UIImage(named: postArray[indexPath.row].image)
         descriptionText.text = postArray[indexPath.row].description
         likesLabel.text = "Likes: \(String(postArray[indexPath.row].likes)) ❤️"
         viewsLabel.text = "Views: \(String(postArray[indexPath.row].views)) 👁️"

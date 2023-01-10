@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileTableHeaderView: UIView {
 
@@ -33,6 +34,7 @@ class ProfileTableHeaderView: UIView {
         let label = UILabel()
         label.text = "В ожидании еды..."
         label.textColor = .gray
+        label.numberOfLines = 3
         label.font = UIFont.systemFont(ofSize: CGFloat(Constants.statusFontSize), weight: .regular)
         return label
     }()
@@ -55,7 +57,7 @@ class ProfileTableHeaderView: UIView {
         button.setTitle("Set status", for: .normal)
         button.titleLabel?.textColor = .white
         button.backgroundColor = .tintColor
-        button.layer.cornerRadius = 12
+        button.layer.cornerRadius = 8
         button.layer.shadowOffset = .init(width: 4, height: 4)
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
@@ -94,7 +96,8 @@ class ProfileTableHeaderView: UIView {
         addSubview(backgroundView)
         addSubview(avatarImageView)
         addSubview(closeButton)
-        setupFrames()
+//        setupFrames()
+        snapKitAutoLayout()
         setupConstraints()
         addTarget()
         setupGestures()
@@ -104,7 +107,9 @@ class ProfileTableHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    // old method
+    /*
     func setupFrames() {
         avatarImageView.frame = CGRect(x: Constants.standartMarggin,
                                        y: Constants.standartMarggin,
@@ -126,6 +131,35 @@ class ProfileTableHeaderView: UIView {
                                        y: 2 * Constants.standartMarggin + Constants.avatar - Constants.statusBottomMargin + Constants.standartMarggin / 2,
                                        width: Int(UIScreen.main.bounds.width) - (3 * Constants.standartMarggin + Constants.avatar),
                                        height: Constants.setStatusTFHeight)
+    }
+     */
+
+    private func snapKitAutoLayout() {
+        avatarImageView.snp.makeConstraints {(make) -> Void in
+            make.width.height.equalTo(Constants.avatar)
+            make.leading.top.equalTo(Constants.standartMarggin)
+        }
+        fullNameLabel.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView.snp_trailingMargin).offset(Constants.standartMarggin + 10)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-Constants.standartMarggin)
+            make.top.equalTo(Constants.fullNameTopMargin)
+        }
+        statusLabel.snp.makeConstraints { make in
+            make.leading.equalTo(fullNameLabel)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-Constants.standartMarggin)
+            make.bottom.equalTo(avatarImageView).offset(-(Constants.statusBottomMargin - Constants.standartMarggin))
+        }
+        statusTextField.snp.makeConstraints { make in
+            make.leading.equalTo(fullNameLabel)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-Constants.standartMarggin)
+            make.top.equalTo(statusLabel.snp_bottomMargin).offset(Constants.standartMarggin)
+            make.height.equalTo(Constants.setStatusTFHeight)
+        }
+        setStatusButton.snp.makeConstraints { make in
+            make.leading.equalTo(avatarImageView)
+            make.trailing.equalTo(safeAreaLayoutGuide).offset(-Constants.standartMarggin)
+            make.top.equalTo(statusTextField.snp_bottomMargin).offset(Constants.statusBottomMargin)
+        }
     }
 
     private func setupConstraints() {
